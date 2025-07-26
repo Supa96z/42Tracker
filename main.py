@@ -68,15 +68,15 @@ def generate_svg(data):
     # --- Top Row: Level & RNCP ---
     svg_parts.append(f'<g transform="translate(30, {padding})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>')
-    svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#58a6ff">{level_float:.2f}</text>')
+    svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#8B000">{level_float:.2f}</text>')
     svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
-    svg_parts.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#58a6ff" />')
+    svg_parts.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#8B000" />')
     svg_parts.append('</g>')
     svg_parts.append(f'<g transform="translate(420, {padding})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">RNCP 7</text>')
-    svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#bc8cff">{rncp_percent:.0f}%</text>')
+    svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#4B0082">{rncp_percent:.0f}%</text>')
     svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
-    svg_parts.append(f'<rect y="50" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#bc8cff" />')
+    svg_parts.append(f'<rect y="50" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#4B0082" />')
     svg_parts.append('</g>')
 
     # --- Middle Section: Skills ---
@@ -94,13 +94,13 @@ def generate_svg(data):
             skill_name = html.escape(skill.get("name", "Unknown"))
             skill_level = skill.get("level", 0.0)
             bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
-            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * skill_row_height)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_width}" height="6" rx="3" fill="#3fb950" /></g>')
+            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * skill_row_height)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_width}" height="6" rx="3" fill="#DAA520" /></g>')
         if i < len(col2_skills):
             skill = col2_skills[i]
             skill_name = html.escape(skill.get("name", "Unknown"))
             skill_level = skill.get("level", 0.0)
             bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
-            svg_parts.append(f'<g transform="translate(390, {y_pos + (i * skill_row_height)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_width}" height="6" rx="3" fill="#3fb950" /></g>')
+            svg_parts.append(f'<g transform="translate(390, {y_pos + (i * skill_row_height)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_width}" height="6" rx="3" fill="#DAA520" /></g>')
     svg_parts.append('</g>')
 
     # --- Bottom Section: Current Projects ---
@@ -113,7 +113,7 @@ def generate_svg(data):
         for i, project in enumerate(in_progress_projects):
             project_name = html.escape(project['project']['name'])
             spacing = 'dx="25"' if i > 0 else ''
-            projects_line += f'<tspan {spacing} fill="#FFD140">★</tspan><tspan fill="#8b949e"> {project_name}</tspan>'
+            projects_line += f'<tspan {spacing} fill="#DAA520">★</tspan><tspan fill="#00008B"> {project_name}</tspan>'
         projects_line += '</text>'
         
         svg_parts.append(projects_line)
