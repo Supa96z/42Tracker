@@ -8,17 +8,17 @@ LOGIN = "abataill"
 MAX_SKILL_LEVEL = 21.0
 CARD_WIDTH = 800
 
-# --- STYLING (GitHub Dark Mode Theme) ---
+# --- STYLING (GitHub Dark Mode Theme - Corrected) ---
 STYLE = """
 <style>
-    .bg {{ fill: #0d1117; }}
-    .title {{ font: 600 22px 'Segoe UI', Arial, sans-serif; fill: #c9d1d9; }}
-    .text {{ font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #8b949e; }}
-    .subtitle {{ font: 600 14px 'Segoe UI', Arial, sans-serif; fill: #c9d1d9; text-transform: uppercase; }}
-    .bar-bg {{ fill: #21262d; }}
-    .level-bar {{ fill: #58a6ff; }}
-    .rncp-bar {{ fill: #bc8cff; }}
-    .skill-bar {{ fill: #3fb950; }}
+    .bg { fill: #0d1117; }
+    .title { font: 600 22px 'Segoe UI', Arial, sans-serif; fill: #c9d1d9; }
+    .text { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #8b949e; }
+    .subtitle { font: 600 14px 'Segoe UI', Arial, sans-serif; fill: #c9d1d9; text-transform: uppercase; }
+    .bar-bg { fill: #21262d; }
+    .level-bar { fill: #58a6ff; }
+    .rncp-bar { fill: #bc8cff; }
+    .skill-bar { fill: #3fb950; }
 </style>
 """
 
