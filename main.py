@@ -22,8 +22,8 @@ def get_token():
     response.raise_for_status()
     return response.json()["access_token"]
 
-def generate_svg(data):
-    """Generates a complete, adaptive SVG from user data with a robust layout."""
+def generate_svg_body(data):
+    """Generates the content part of the SVG."""
     # --- Data Processing ---
     cursus_data = next((c for c in data["cursus_users"] if c["cursus_id"] == 21), None)
     if not cursus_data:
@@ -41,81 +41,65 @@ def generate_svg(data):
         and p['project']['name'] != 'Exam Rank 04'
     ]
 
-    # --- LAYOUT & HEIGHT CALCULATION ---
+    # --- LAYOUT & SIZING ---
     padding = 20
-    section_gap = 20 # The vertical space between sections
+    section_gap = 20
     
-    # This variable tracks the vertical position as we build the card
-    current_y = padding
+    # Calculate content positions
+    header_y = padding
+    skills_y = header_y + 100 + section_gap
+    num_skill_rows = (len(skills[:10]) + 1) // 2
+    projects_y = skills_y + 30 + (num_skill_rows * 35) + section_gap if in_progress_projects else 0
+    
+    # --- SVG String Building ---
+    body = ""
 
-    # --- SVG Building ---
-    svg_body = [] # We'll build the body first, then wrap it with the header/footer
-    
-    # --- Top Row: Level & RNCP ---
-    svg_body.append(f'<g transform="translate(30, {current_y})">')
-    svg_body.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>')
-    svg_body.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#58a6ff">{level_float:.2f}</text>')
-    svg_body.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
-    svg_body.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#58a6ff" />')
-    svg_body.append('</g>')
-    svg_body.append(f'<g transform="translate(420, {current_y})">')
-    svg_body.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Progress to RNCP Level 7</text>')
-    svg_body.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#bc8cff">{rncp_percent:.0f}%</text>')
-    svg_body.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
-    svg_body.append(f'<rect y="50" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#bc8cff" />')
-    svg_body.append('</g>')
-    current_y += 100 # Add height of the header section
+    # Header section
+    body += f'<g transform="translate(30, {header_y})">'
+    body += '<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>'
+    body += f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#58a6ff">{level_float:.2f}</text>'
+    body += f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />'
+    body += f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#58a6ff" />'
+    body += '</g>'
+    body += f'<g transform="translate(420, {header_y})">'
+    body += '<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Progress to RNCP Level 7</text>'
+    body += f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#bc8cff">{rncp_percent:.0f}%</text>'
+    body += f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />'
+    body += f'<rect y="50" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#bc8cff" />'
+    body += '</g>'
 
-    # --- Middle Section: Skills ---
-    current_y += section_gap
-    svg_body.append(f'<g transform="translate(30, {current_y})">')
-    svg_body.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Skills</text>')
-    
+    # Skills section
+    body += f'<g transform="translate(30, {skills_y})">'
+    body += '<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Skills</text>'
     col1_skills = skills[:5]
     col2_skills = skills[5:10]
-    num_skill_rows = (len(skills[:10]) + 1) // 2
     y_pos = 30
-    skill_row_height = 35
     for i in range(num_skill_rows):
         if i < len(col1_skills):
-            skill = col1_skills[i]
-            skill_name = html.escape(skill.get("name", "Unknown"))
-            skill_level = skill.get("level", 0.0)
-            bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
-            svg_body.append(f'<g transform="translate(0, {y_pos + (i * skill_row_height)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_width}" height="6" rx="3" fill="#3fb950" /></g>')
+            s = col1_skills[i]
+            bar_w = min(350 * (s.get('level', 0.0) / MAX_SKILL_LEVEL), 350)
+            body += f'<g transform="translate(0, {y_pos + (i * 35)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{html.escape(s.get("name"))}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{s.get("level", 0.0):.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_w}" height="6" rx="3" fill="#3fb950" /></g>'
         if i < len(col2_skills):
-            skill = col2_skills[i]
-            skill_name = html.escape(skill.get("name", "Unknown"))
-            skill_level = skill.get("level", 0.0)
-            bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
-            svg_body.append(f'<g transform="translate(390, {y_pos + (i * skill_row_height)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_width}" height="6" rx="3" fill="#3fb950" /></g>')
-    svg_body.append('</g>')
-    current_y += 30 + (num_skill_rows * skill_row_height)
+            s = col2_skills[i]
+            bar_w = min(350 * (s.get('level', 0.0) / MAX_SKILL_LEVEL), 350)
+            body += f'<g transform="translate(390, {y_pos + (i * 35)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{html.escape(s.get("name"))}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{s.get("level", 0.0):.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_w}" height="6" rx="3" fill="#3fb950" /></g>'
+    body += '</g>'
 
-    # --- Bottom Section: Current Projects ---
+    # Projects section
     if in_progress_projects:
-        current_y += section_gap
-        svg_body.append(f'<g transform="translate(30, {current_y})">')
-        svg_body.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>')
-        
-        projects_line = '<text y="30" style="font: 600 14px \'Segoe UI\', Arial, sans-serif;">'
-        for i, project in enumerate(in_progress_projects):
-            project_name = html.escape(project['project']['name'])
+        body += f'<g transform="translate(30, {projects_y})">'
+        body += '<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>'
+        body += '<text y="30" style="font: 600 14px \'Segoe UI\', Arial, sans-serif;">'
+        for i, p in enumerate(in_progress_projects):
             spacing = 'dx="25"' if i > 0 else ''
-            projects_line += f'<tspan {spacing} fill="#FFD140">★</tspan><tspan fill="#8b949e"> {project_name}</tspan>'
-        projects_line += '</text>'
-        
-        svg_body.append(projects_line)
-        current_y += 30
+            body += f'<tspan {spacing} fill="#FFD140">★</tspan><tspan fill="#8b949e"> {html.escape(p["project"]["name"])}</tspan>'
+        body += '</text>'
+        body += '</g>'
     
-    card_height = current_y + padding
+    # Calculate final height
+    height = projects_y + 60 if in_progress_projects else skills_y + 30 + (num_skill_rows * 35) + padding
 
-    # --- Final SVG Assembly ---
-    svg_header = f'<svg width="{CARD_WIDTH}" height="{card_height}" viewBox="0 0 {CARD_WIDTH} {card_height}" fill="none" xmlns="http://www.w3.org/2000/svg">'
-    svg_background = f'<rect width="{CARD_WIDTH}" height="{card_height}" rx="10" fill="transparent"/>'
-    svg_footer = '</svg>'
-    
-    return "\n".join([svg_header, svg_background] + svg_body + [svg_footer])
+    return body, height
 
 def main():
     """Main function to run the process."""
@@ -126,10 +110,16 @@ def main():
         user_response.raise_for_status()
         user_data = user_response.json()
         
-        svg_content = generate_svg(user_data)
+        svg_body, card_height = generate_svg_body(user_data)
+        
+        # Assemble the final SVG
+        svg_final = f'<svg width="{CARD_WIDTH}" height="{card_height}" viewBox="0 0 {CARD_WIDTH} {card_height}" fill="none" xmlns="http://www.w3.org/2000/svg">'
+        svg_final += f'<rect width="{CARD_WIDTH}" height="{card_height}" rx="10" fill="transparent"/>'
+        svg_final += svg_body
+        svg_final += '</svg>'
         
         with open("progress.svg", "w") as f:
-            f.write(svg_content)
+            f.write(svg_final)
         print("✅ SVG generated and written to progress.svg")
 
     except Exception as e:
