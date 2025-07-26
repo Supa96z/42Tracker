@@ -1,5 +1,5 @@
-<svg width="800" height="355" viewBox="0 0 800 355" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="800" height="355" rx="10" fill="#1d1f21"/>
+<svg width="800" height="380" viewBox="0 0 800 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="380" rx="10" fill="#1d1f21"/>
 <text x="30" y="45" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="600" fill="#c5c8c6">42 Cursus Status</text>
 <g transform="translate(30, 80)">
 <text y="0" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600" fill="#81a2be" style="text-transform: uppercase;">Current Level</text>
@@ -8,7 +8,7 @@
 <rect y="50" width="283.50000000000017" height="12" rx="6" fill="#81a2be" />
 </g>
 <g transform="translate(420, 80)">
-<text y="0" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600" fill="#b294bb" style="text-transform: uppercase;">Progress to RNCP Level 7</text>
+<text y="0" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600" fill="#b294bb" style="text-transform: uppercase;">Progress to RNCP 7</text>
 <text y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="28" font-weight="700" fill="#b294bb">51%</text>
 <rect y="50" width="350" height="12" rx="6" fill="#282a2e" />
 <rect y="50" width="180.16666666666666" height="12" rx="6" fill="#b294bb" />
@@ -27,43 +27,43 @@
     <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />
     <rect y="8" width="72.5" height="6" rx="3" fill="#b5bd68" />
 </g>
-<g transform="translate(0, 55)">
+<g transform="translate(0, 60)">
     <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Network &amp; system administration</text>
     <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">7.10</text>
     <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />
     <rect y="8" width="118.33333333333331" height="6" rx="3" fill="#b5bd68" />
 </g>
-<g transform="translate(390, 55)">
+<g transform="translate(390, 60)">
     <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Algorithms &amp; AI</text>
     <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">4.05</text>
     <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />
     <rect y="8" width="67.5" height="6" rx="3" fill="#b5bd68" />
 </g>
-<g transform="translate(0, 80)">
+<g transform="translate(0, 90)">
     <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Web</text>
     <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">6.39</text>
     <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />
     <rect y="8" width="106.5" height="6" rx="3" fill="#b5bd68" />
 </g>
-<g transform="translate(390, 80)">
+<g transform="translate(390, 90)">
     <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Group &amp; interpersonal</text>
     <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">3.93</text>
     <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />
     <rect y="8" width="65.5" height="6" rx="3" fill="#b5bd68" />
 </g>
-<g transform="translate(0, 105)">
+<g transform="translate(0, 120)">
     <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Object-oriented programming</text>
     <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">5.68</text>
     <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />
     <rect y="8" width="94.66666666666667" height="6" rx="3" fill="#b5bd68" />
 </g>
-<g transform="translate(390, 105)">
+<g transform="translate(390, 120)">
     <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Graphics</text>
     <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">3.33</text>
     <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />
     <rect y="8" width="55.50000000000001" height="6" rx="3" fill="#b5bd68" />
 </g>
-<g transform="translate(0, 130)">
+<g transform="translate(0, 150)">
     <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Imperative programming</text>
     <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">4.95</text>
     <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />
