@@ -43,7 +43,7 @@ def generate_svg(data):
 
     # --- LAYOUT & HEIGHT CALCULATION ---
     # Define fixed heights and gaps for a consistent layout
-    padding = 30
+    padding = 25
     section_gap = 5
     header_section_height = 80
     
@@ -105,7 +105,7 @@ def generate_svg(data):
 
     # --- Bottom Section: Current Projects ---
     if in_progress_projects:
-        projects_y_start = skills_y_start + skills_section_height + section_gap
+        projects_y_start = skills_y_start + skills_section_height + section_gap -5
         svg_parts.append(f'<g transform="translate(30, {projects_y_start})">')
         svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>')
         
