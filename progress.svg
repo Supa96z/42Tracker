@@ -1,18 +1,18 @@
-<svg width="800" height="345" viewBox="0 0 800 345" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="800" height="345" rx="10" fill="transparent"/>
-<g transform="translate(30, 0)">
+<svg width="800" height="390" viewBox="0 0 800 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="390" rx="10" fill="transparent"/>
+<g transform="translate(30, 30)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>
 <text y="35" style="font: 700 28px 'Segoe UI', Arial, sans-serif;" fill="#58a6ff">10.81</text>
 <rect y="50" width="350" height="12" rx="6" fill="#21262d" />
 <rect y="50" width="283.50000000000017" height="12" rx="6" fill="#58a6ff" />
 </g>
-<g transform="translate(420, 0)">
+<g transform="translate(420, 30)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Progress to RNCP Level 7</text>
 <text y="35" style="font: 700 28px 'Segoe UI', Arial, sans-serif;" fill="#bc8cff">51%</text>
 <rect y="50" width="350" height="12" rx="6" fill="#21262d" />
 <rect y="50" width="180.16666666666666" height="12" rx="6" fill="#bc8cff" />
 </g>
-<g transform="translate(30, 85)">
+<g transform="translate(30, 125)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Skills</text>
 <g transform="translate(0, 30)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Rigor</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">7.95</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="132.5" height="6" rx="3" fill="#3fb950" /></g>
 <g transform="translate(390, 30)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Unix</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.35</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="72.5" height="6" rx="3" fill="#3fb950" /></g>
@@ -24,8 +24,7 @@
 <g transform="translate(390, 135)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Graphics</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">3.33</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="55.50000000000001" height="6" rx="3" fill="#3fb950" /></g>
 <g transform="translate(0, 170)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Imperative programming</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.95</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="82.5" height="6" rx="3" fill="#3fb950" /></g>
 </g>
-<g transform="translate(30, 295)">
+<g transform="translate(30, 345)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>
 <text y="30" style="font: 600 14px 'Segoe UI', Arial, sans-serif;"><tspan  fill="#FFD140">★</tspan><tspan fill="#8b949e"> Cybersecurity</tspan><tspan dx="25" fill="#FFD140">★</tspan><tspan fill="#8b949e"> ft_linear_regression</tspan><tspan dx="25" fill="#FFD140">★</tspan><tspan fill="#8b949e"> Python for Data Science</tspan><tspan dx="25" fill="#FFD140">★</tspan><tspan fill="#8b949e"> dslr</tspan></text>
-</g>
 </svg>
