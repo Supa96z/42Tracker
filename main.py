@@ -32,15 +32,28 @@ def generate_svg(data):
     level_float = cursus_data.get("level", 0.0)
     rncp_percent = min((level_float / 21) * 100, 100)
     skills = sorted(cursus_data.get("skills", []), key=lambda x: x['level'], reverse=True)
+    
+    # Filter for in-progress projects
+    projects_data = data.get("projects_users", [])
+    in_progress_projects = [p for p in projects_data if p['status'] == 'in_progress' and p['cursus_ids'] == [21]]
+
 
     # --- DYNAMIC HEIGHT CALCULATION ---
     header_height = 130
     skills_header_height = 40
-    # Determine the number of rows needed for the skills section (2 skills per row)
     num_skill_rows = (len(skills[:10]) + 1) // 2
-    row_height = 35
-    bottom_padding = 15 # Reduced padding for a snug fit
-    card_height = header_height + skills_header_height + (num_skill_rows * row_height) + bottom_padding
+    skill_row_height = 35
+    
+    projects_header_height = 0
+    project_row_height = 25
+    num_project_rows = 0
+
+    if in_progress_projects:
+        projects_header_height = 60 # Add space for the new section title
+        num_project_rows = len(in_progress_projects)
+
+    bottom_padding = 20
+    card_height = header_height + skills_header_height + (num_skill_rows * skill_row_height) + projects_header_height + (num_project_rows * project_row_height) + bottom_padding
 
     # --- SVG Building ---
     svg_parts = []
@@ -61,42 +74,41 @@ def generate_svg(data):
     svg_parts.append(f'<rect y="50" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#bc8cff" />')
     svg_parts.append('</g>')
 
-    # --- Bottom Section: Skills ---
-    svg_parts.append(f'<g transform="translate(30, {header_height})">')
+    # --- Middle Section: Skills ---
+    skills_y_start = header_height
+    svg_parts.append(f'<g transform="translate(30, {skills_y_start})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Skills</text>')
     
     col1_skills = skills[:5]
     col2_skills = skills[5:10]
     y_pos = 30
     for i in range(num_skill_rows):
-        # Column 1
         if i < len(col1_skills):
             skill = col1_skills[i]
             skill_name = html.escape(skill.get("name", "Unknown"))
             skill_level = skill.get("level", 0.0)
             bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
-            
-            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * row_height)})">')
-            svg_parts.append(f'    <text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text>')
-            svg_parts.append(f'    <text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text>')
-            svg_parts.append(f'    <rect y="8" width="350" height="6" rx="3" fill="#21262d" />')
-            svg_parts.append(f'    <rect y="8" width="{bar_width}" height="6" rx="3" fill="#3fb950" />')
-            svg_parts.append(f'</g>')
-        # Column 2
+            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * skill_row_height)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_width}" height="6" rx="3" fill="#3fb950" /></g>')
         if i < len(col2_skills):
             skill = col2_skills[i]
             skill_name = html.escape(skill.get("name", "Unknown"))
             skill_level = skill.get("level", 0.0)
             bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
-            
-            svg_parts.append(f'<g transform="translate(390, {y_pos + (i * row_height)})">')
-            svg_parts.append(f'    <text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text>')
-            svg_parts.append(f'    <text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text>')
-            svg_parts.append(f'    <rect y="8" width="350" height="6" rx="3" fill="#21262d" />')
-            svg_parts.append(f'    <rect y="8" width="{bar_width}" height="6" rx="3" fill="#3fb950" />')
-            svg_parts.append(f'</g>')
-
+            svg_parts.append(f'<g transform="translate(390, {y_pos + (i * skill_row_height)})"><text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text><text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="{bar_width}" height="6" rx="3" fill="#3fb950" /></g>')
     svg_parts.append('</g>')
+
+    # --- Bottom Section: Current Projects ---
+    if in_progress_projects:
+        projects_y_start = skills_y_start + skills_header_height + (num_skill_rows * skill_row_height)
+        svg_parts.append(f'<g transform="translate(30, {projects_y_start})">')
+        svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>')
+        project_y_pos = 25
+        for project in in_progress_projects:
+            project_name = html.escape(project['project']['name'])
+            svg_parts.append(f'<text y="{project_y_pos}" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">- {project_name}</text>')
+            project_y_pos += 20
+        svg_parts.append('</g>')
+    
     svg_parts.append('</svg>')
     return "\n".join(svg_parts)
 
@@ -105,10 +117,10 @@ def main():
     try:
         token = get_token()
         headers = {"Authorization": f"Bearer {token}"}
-        api_url = f"https://api.intra.42.fr/v2/users/{LOGIN}"
-        response = requests.get(api_url, headers=headers)
-        response.raise_for_status()
-        user_data = response.json()
+        # Fetch user data, which includes projects
+        user_response = requests.get(f"https://api.intra.42.fr/v2/users/{LOGIN}", headers=headers)
+        user_response.raise_for_status()
+        user_data = user_response.json()
         
         svg_content = generate_svg(user_data)
         
