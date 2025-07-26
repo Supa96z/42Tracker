@@ -27,7 +27,7 @@ def get_token():
 def main():
     """Main function to fetch data and generate the SVG."""
     # --- IMPORTANT: Ensure this is your correct 42 login ---
-    LOGIN = "Supa96z" 
+    LOGIN = "abataill" 
     
     token = get_token()
     headers = {"Authorization": f"Bearer {token}"}
