@@ -43,7 +43,7 @@ def generate_svg(data):
 
     # --- LAYOUT & HEIGHT CALCULATION ---
     # Define fixed heights and gaps for a consistent layout
-    padding = 0
+    padding = 30
     section_gap = 5
     header_section_height = 80
     
@@ -55,7 +55,7 @@ def generate_svg(data):
         projects_section_height = 50 # Title + one row of projects
     
     # Calculate total height based on content
-    card_height = 30 + header_section_height + section_gap + skills_section_height
+    card_height = header_section_height + section_gap + skills_section_height
     if in_progress_projects:
         card_height += section_gap + projects_section_height
     card_height += padding
