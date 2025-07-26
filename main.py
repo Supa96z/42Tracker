@@ -1,5 +1,6 @@
 import os
 import requests
+import html
 
 def get_token():
     """
@@ -63,10 +64,13 @@ def main():
         svg_content = svg_content.replace("%%RNCP7_PERCENT%%", str(int(rncp7_percentage)))
         svg_content = svg_content.replace('id="rncp7-progress-bar" width="0"', f'id="rncp7-progress-bar" width="{rncp7_progress_width}"')
         
+        # Generate and inject the skills block
         skills_svg_block = ""
         y_pos = 140
+        # Sort skills by level, highest first
         for skill in sorted(skills_data, key=lambda x: x['level'], reverse=True):
-            skill_name = skill["name"]
+            # Escape the skill name to handle special characters like '&'
+            skill_name = html.escape(skill["name"])
             skill_level = skill["level"]
             skill_progress_width = 350 * (skill_level / 100)
             
