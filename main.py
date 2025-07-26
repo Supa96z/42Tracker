@@ -5,20 +5,20 @@ import sys
 
 # --- CONFIGURATION ---
 LOGIN = "abataill"
-MAX_SKILL_LEVEL = 21.0 # The level at which a skill bar is considered 100%
+# The level at which a skill is considered maxed out for the progress bar
+MAX_SKILL_LEVEL = 21.0 
 
-# --- SVG STYLING ---
-# Feel free to change these colors
+# --- STYLING (Feel free to change colors) ---
 STYLE = """
 <style>
-    .bg { fill: #1a1b26; }
-    .title { font-size: 24px; font-weight: bold; fill: #c0caf5; font-family: 'Segoe UI', Arial, sans-serif; }
-    .subtitle { font-size: 14px; font-weight: bold; fill: #a9b1d6; font-family: 'Segoe UI', Arial, sans-serif; }
-    .text { font-size: 14px; fill: #a9b1d6; font-family: 'Segoe UI', Arial, sans-serif; }
-    .bar-bg { fill: #414868; }
-    .level-bar { fill: #7aa2f7; }
-    .rncp-bar { fill: #bb9af7; }
-    .skill-bar { fill: #9ece6a; }
+    .bg {{ fill: #1d1f21; }}
+    .title {{ font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #c5c8c6; }}
+    .text {{ font: 400 14px 'Segoe UI', Arial, sans-serif; fill: #c5c8c6; }}
+    .subtitle {{ font: 600 12px 'Segoe UI', Arial, sans-serif; fill: #81a2be; text-transform: uppercase; }}
+    .bar-bg {{ fill: #282a2e; }}
+    .level-bar {{ fill: #81a2be; }}
+    .rncp-bar {{ fill: #b294bb; }}
+    .skill-bar {{ fill: #b5bd68; }}
 </style>
 """
 
@@ -44,8 +44,6 @@ def generate_svg(data):
         raise Exception("ERROR: Cursus ID 21 not found for this user.")
 
     level_float = cursus_data.get("level", 0.0)
-    level_int = int(level_float)
-    level_decimal_percent = (level_float - level_int)
     
     rncp_percent = (level_float / 21) * 100
     if rncp_percent > 100: rncp_percent = 100
@@ -56,36 +54,43 @@ def generate_svg(data):
     svg_parts = []
     svg_parts.append('<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">')
     svg_parts.append(STYLE)
-    svg_parts.append('<rect width="100%" height="100%" class="bg"/>')
-    svg_parts.append('<text x="30" y="50" class="title">My 42 Cursus Status</text>')
+    svg_parts.append('<rect width="100%" height="100%" rx="10" class="bg"/>')
+    svg_parts.append(f'<text x="30" y="40" class="title">42 Cursus Status for {LOGIN}</text>')
     
-    # --- Level Section ---
-    svg_parts.append(f'<text x="30" y="110" class="subtitle">CURRENT LEVEL</text>')
-    svg_parts.append(f'<text x="30" y="145" font-size="28" font-weight="bold" fill="#7aa2f7">{level_float:.2f}</text>')
-    svg_parts.append(f'<rect x="30" y="165" width="350" height="15" rx="7.5" class="bar-bg"/>')
-    svg_parts.append(f'<rect x="30" y="165" width="{350 * level_decimal_percent}" height="15" rx="7.5" class="level-bar"/>')
+    # --- Level & RNCP Section (Left Side) ---
+    svg_parts.append('<g transform="translate(30, 80)">')
+    svg_parts.append(f'<text y="20" class="subtitle">Current Level</text>')
+    svg_parts.append(f'<text y="55" font-size="28" font-weight="bold" class="level-bar">{level_float:.2f}</text>')
+    svg_parts.append(f'<rect y="75" width="350" height="15" rx="7.5" class="bar-bg"/>')
+    svg_parts.append(f'<rect y="75" width="{350 * (level_float - int(level_float))}" height="15" rx="7.5" class="level-bar"/>')
 
-    # --- RNCP Section ---
-    svg_parts.append(f'<text x="30" y="230" class="subtitle">PROGRESS TOWARDS RNCP LVL 7 (LVL 21)</text>')
-    svg_parts.append(f'<text x="30" y="265" font-size="28" font-weight="bold" fill="#bb9af7">{rncp_percent:.0f}%</text>')
-    svg_parts.append(f'<rect x="30" y="285" width="350" height="15" rx="7.5" class="bar-bg"/>')
-    svg_parts.append(f'<rect x="30" y="285" width="{350 * (rncp_percent / 100)}" height="15" rx="7.5" class="rncp-bar"/>')
+    svg_parts.append(f'<text y="140" class="subtitle">Progress to RNCP Level 7</text>')
+    svg_parts.append(f'<text y="175" font-size="28" font-weight="bold" class="rncp-bar">{rncp_percent:.0f}%</text>')
+    svg_parts.append(f'<rect y="195" width="350" height="15" rx="7.5" class="bar-bg"/>')
+    svg_parts.append(f'<rect y="195" width="{350 * (rncp_percent / 100)}" height="15" rx="7.5" class="rncp-bar"/>')
+    svg_parts.append('</g>')
 
-    # --- Skills Section ---
-    svg_parts.append('<text x="420" y="110" class="subtitle">SKILLS</text>')
-    y_pos = 140
+    # --- Skills Section (Right Side) ---
+    skills_height = len(skills) * 40 # Calculate total height of the skills block
+    y_offset = 80 + (250 - skills_height) / 2 # Calculate vertical center offset
+    
+    svg_parts.append(f'<g transform="translate(420, {y_offset})">')
+    svg_parts.append('<text y="0" class="subtitle">Skills</text>')
+    y_pos = 25 # Start position for the first skill bar
     for skill in skills:
         skill_name = html.escape(skill.get("name", "Unknown"))
         skill_level = skill.get("level", 0.0)
         bar_width = 350 * (skill_level / MAX_SKILL_LEVEL)
-        
-        svg_parts.append(f'<g transform="translate(420, {y_pos})">')
+        if bar_width > 350: bar_width = 350
+
+        svg_parts.append(f'<g transform="translate(0, {y_pos})">')
         svg_parts.append(f'    <text class="text">{skill_name}</text>')
         svg_parts.append(f'    <text class="text" x="350" text-anchor="end">{skill_level:.2f}</text>')
         svg_parts.append(f'    <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>')
         svg_parts.append(f'    <rect y="10" width="{bar_width}" height="8" rx="4" class="skill-bar"/>')
         svg_parts.append(f'</g>')
         y_pos += 40
+    svg_parts.append('</g>')
 
     svg_parts.append('</svg>')
     return "\n".join(svg_parts)
@@ -95,7 +100,6 @@ def main():
     try:
         print(f"--- Starting SVG Generation for user: {LOGIN} ---")
         token = get_token()
-        
         headers = {"Authorization": f"Bearer {token}"}
         api_url = f"https://api.intra.42.fr/v2/users/{LOGIN}"
         response = requests.get(api_url, headers=headers)
