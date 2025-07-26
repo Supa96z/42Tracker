@@ -1,5 +1,5 @@
-<svg width="800" height="515" viewBox="0 0 800 515" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="800" height="515" rx="10" fill="#1d1f21"/>
+<svg width="800" height="300" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="300" rx="10" fill="#1d1f21"/>
 <text x="30" y="45" font-family="'Segoe UI', Arial, sans-serif" font-size="20" font-weight="600" fill="#c5c8c6">42 Cursus Status: abataill</text>
 <g transform="translate(30, 80)">
 <text y="0" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600" fill="#81a2be" style="text-transform: uppercase;">Current Level</text>
@@ -14,58 +14,58 @@
 <g transform="translate(420, 80)">
 <text y="0" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600" fill="#b5bd68" style="text-transform: uppercase;">Skills</text>
 <g transform="translate(0, 30)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Rigor</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">7.95</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="132.5" height="8" rx="4" fill="#b5bd68" />
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Rigor</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">7.95</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="60.57142857142857" height="6" rx="3" fill="#b5bd68" />
+</g>
+<g transform="translate(190, 30)">
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Unix</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">4.35</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="33.14285714285714" height="6" rx="3" fill="#b5bd68" />
 </g>
 <g transform="translate(0, 65)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Network &amp; system administration</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">7.10</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="118.33333333333331" height="8" rx="4" fill="#b5bd68" />
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Network &amp; system administration</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">7.10</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="54.09523809523809" height="6" rx="3" fill="#b5bd68" />
+</g>
+<g transform="translate(190, 65)">
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Algorithms &amp; AI</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">4.05</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="30.857142857142854" height="6" rx="3" fill="#b5bd68" />
 </g>
 <g transform="translate(0, 100)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Web</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">6.39</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="106.5" height="8" rx="4" fill="#b5bd68" />
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Web</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">6.39</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="48.68571428571428" height="6" rx="3" fill="#b5bd68" />
+</g>
+<g transform="translate(190, 100)">
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Group &amp; interpersonal</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">3.93</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="29.942857142857143" height="6" rx="3" fill="#b5bd68" />
 </g>
 <g transform="translate(0, 135)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Object-oriented programming</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">5.68</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="94.66666666666667" height="8" rx="4" fill="#b5bd68" />
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Object-oriented programming</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">5.68</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="43.27619047619048" height="6" rx="3" fill="#b5bd68" />
+</g>
+<g transform="translate(190, 135)">
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Graphics</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">3.33</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="25.371428571428574" height="6" rx="3" fill="#b5bd68" />
 </g>
 <g transform="translate(0, 170)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Imperative programming</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">4.95</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="82.5" height="8" rx="4" fill="#b5bd68" />
-</g>
-<g transform="translate(0, 205)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Unix</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">4.35</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="72.5" height="8" rx="4" fill="#b5bd68" />
-</g>
-<g transform="translate(0, 240)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Algorithms &amp; AI</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">4.05</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="67.5" height="8" rx="4" fill="#b5bd68" />
-</g>
-<g transform="translate(0, 275)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Group &amp; interpersonal</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">3.93</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="65.5" height="8" rx="4" fill="#b5bd68" />
-</g>
-<g transform="translate(0, 310)">
-    <text font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">Graphics</text>
-    <text x="350" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#c5c8c6">3.33</text>
-    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />
-    <rect y="10" width="55.50000000000001" height="8" rx="4" fill="#b5bd68" />
+    <text font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">Imperative programming</text>
+    <text x="160" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#c5c8c6">4.95</text>
+    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />
+    <rect y="8" width="37.714285714285715" height="6" rx="3" fill="#b5bd68" />
 </g>
 </g>
 </svg>
