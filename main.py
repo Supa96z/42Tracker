@@ -23,7 +23,7 @@ def get_token():
     return response.json()["access_token"]
 
 def generate_svg(data):
-    """Generates a complete, adaptive SVG from user data with a transparent background."""
+    """Generates a complete, adaptive SVG from user data."""
     # --- Data Processing ---
     cursus_data = next((c for c in data["cursus_users"] if c["cursus_id"] == 21), None)
     if not cursus_data:
@@ -33,41 +33,44 @@ def generate_svg(data):
     rncp_percent = min((level_float / 21) * 100, 100)
     skills = sorted(cursus_data.get("skills", []), key=lambda x: x['level'], reverse=True)
 
-    card_height = 180 + (5 * 30)
+    # --- DYNAMIC HEIGHT CALCULATION ---
+    header_height = 130 # Reduced height after removing title
+    skills_header_height = 40
+    num_skill_rows = (len(skills[:10]) + 1) // 2
+    row_height = 35
+    bottom_padding = 20
+    card_height = header_height + skills_header_height + (num_skill_rows * row_height) + bottom_padding
 
-    # --- SVG Building ---
+    # --- SVG Building with inline attributes ---
     svg_parts = []
     svg_parts.append(f'<svg width="{CARD_WIDTH}" height="{card_height}" viewBox="0 0 {CARD_WIDTH} {card_height}" fill="none" xmlns="http://www.w3.org/2000/svg">')
-    # Background - SET TO TRANSPARENT
     svg_parts.append(f'<rect width="{CARD_WIDTH}" height="{card_height}" rx="10" fill="transparent"/>')
-    # Title
-    svg_parts.append(f'<text x="30" y="45" style="font: 600 22px \'Segoe UI\', Arial, sans-serif;" fill="#c9d1d9">42 Cursus Status</text>')
     
-    # --- Top Row: Level & RNCP ---
-    # Level
-    svg_parts.append('<g transform="translate(30, 80)">')
+    # --- Top Row: Level & RNCP (Moved up) ---
+    # Level Section (Left)
+    svg_parts.append('<g transform="translate(30, 30)">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>')
     svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#58a6ff">{level_float:.2f}</text>')
     svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
     svg_parts.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#58a6ff" />')
     svg_parts.append('</g>')
-    # RNCP
-    svg_parts.append('<g transform="translate(420, 80)">')
+
+    # RNCP Section (Right)
+    svg_parts.append('<g transform="translate(420, 30)">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Progress to RNCP Level 7</text>')
     svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#bc8cff">{rncp_percent:.0f}%</text>')
     svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
     svg_parts.append(f'<rect y="50" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#bc8cff" />')
     svg_parts.append('</g>')
 
-    # --- Bottom Section: Skills ---
-    svg_parts.append('<g transform="translate(30, 180)">')
+    # --- Bottom Section: Skills (Moved up) ---
+    svg_parts.append(f'<g transform="translate(30, {header_height})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Skills</text>')
     
     col1_skills = skills[:5]
     col2_skills = skills[5:10]
-    y_pos = 25
-    spacing = 30 
-    for i in range(5):
+    y_pos = 30
+    for i in range(num_skill_rows):
         # Column 1
         if i < len(col1_skills):
             skill = col1_skills[i]
@@ -75,7 +78,7 @@ def generate_svg(data):
             skill_level = skill.get("level", 0.0)
             bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
             
-            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * spacing)})">')
+            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * row_height)})">')
             svg_parts.append(f'    <text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text>')
             svg_parts.append(f'    <text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text>')
             svg_parts.append(f'    <rect y="8" width="350" height="6" rx="3" fill="#21262d" />')
@@ -88,7 +91,7 @@ def generate_svg(data):
             skill_level = skill.get("level", 0.0)
             bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
             
-            svg_parts.append(f'<g transform="translate(390, {y_pos + (i * spacing)})">')
+            svg_parts.append(f'<g transform="translate(390, {y_pos + (i * row_height)})">')
             svg_parts.append(f'    <text style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_name}</text>')
             svg_parts.append(f'    <text x="350" text-anchor="end" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">{skill_level:.2f}</text>')
             svg_parts.append(f'    <rect y="8" width="350" height="6" rx="3" fill="#21262d" />')
