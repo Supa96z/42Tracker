@@ -2,9 +2,9 @@
 <rect width="800" height="375" rx="10" fill="transparent"/>
 <g transform="translate(30, 30)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>
-<text y="35" style="font: 700 28px 'Segoe UI', Arial, sans-serif;" fill="#8B000">10.81</text>
+<text y="35" style="font: 700 28px 'Segoe UI', Arial, sans-serif;" fill="#8B0000">10.81</text>
 <rect y="50" width="350" height="12" rx="6" fill="#21262d" />
-<rect y="50" width="283.50000000000017" height="12" rx="6" fill="#8B000" />
+<rect y="50" width="283.50000000000017" height="12" rx="6" fill="#8B0000" />
 </g>
 <g transform="translate(420, 30)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">RNCP 7</text>
@@ -26,6 +26,6 @@
 </g>
 <g transform="translate(30, 325)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>
-<text y="20" style="font: 600 14px 'Segoe UI', Arial, sans-serif;"><tspan  fill="#DAA520">★</tspan><tspan fill="#00008B"> Cybersecurity</tspan><tspan dx="25" fill="#DAA520">★</tspan><tspan fill="#00008B"> ft_linear_regression</tspan><tspan dx="25" fill="#DAA520">★</tspan><tspan fill="#00008B"> Python for Data Science</tspan><tspan dx="25" fill="#DAA520">★</tspan><tspan fill="#00008B"> dslr</tspan></text>
+<text y="20" style="font: 600 14px 'Segoe UI', Arial, sans-serif;"><tspan  fill="#DAA520">★</tspan><tspan fill="#5195F5"> Cybersecurity</tspan><tspan dx="25" fill="#DAA520">★</tspan><tspan fill="#5195F5"> ft_linear_regression</tspan><tspan dx="25" fill="#DAA520">★</tspan><tspan fill="#5195F5"> Python for Data Science</tspan><tspan dx="25" fill="#DAA520">★</tspan><tspan fill="#5195F5"> dslr</tspan></text>
 </g>
 </svg>
