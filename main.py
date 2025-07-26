@@ -23,7 +23,7 @@ def get_token():
     return response.json()["access_token"]
 
 def generate_svg(data):
-    """Generates a complete, adaptive SVG from user data with inline styles."""
+    """Generates a complete, adaptive SVG from user data with a transparent background."""
     # --- Data Processing ---
     cursus_data = next((c for c in data["cursus_users"] if c["cursus_id"] == 21), None)
     if not cursus_data:
@@ -38,8 +38,8 @@ def generate_svg(data):
     # --- SVG Building ---
     svg_parts = []
     svg_parts.append(f'<svg width="{CARD_WIDTH}" height="{card_height}" viewBox="0 0 {CARD_WIDTH} {card_height}" fill="none" xmlns="http://www.w3.org/2000/svg">')
-    # Background
-    svg_parts.append(f'<rect width="{CARD_WIDTH}" height="{card_height}" rx="10" fill="#0d1117"/>')
+    # Background - SET TO TRANSPARENT
+    svg_parts.append(f'<rect width="{CARD_WIDTH}" height="{card_height}" rx="10" fill="transparent"/>')
     # Title
     svg_parts.append(f'<text x="30" y="45" style="font: 600 22px \'Segoe UI\', Arial, sans-serif;" fill="#c9d1d9">42 Cursus Status</text>')
     
