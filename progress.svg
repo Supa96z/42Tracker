@@ -1,5 +1,5 @@
 <svg width="800" height="330" viewBox="0 0 800 330" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="800" height="330" rx="10" fill="#0d1117"/>
+<rect width="800" height="330" rx="10" fill="transparent"/>
 <text x="30" y="45" style="font: 600 22px 'Segoe UI', Arial, sans-serif;" fill="#c9d1d9">42 Cursus Status</text>
 <g transform="translate(30, 80)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>
