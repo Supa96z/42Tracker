@@ -45,7 +45,7 @@ def generate_svg(data):
     svg_parts.append(f'<svg width="{CARD_WIDTH}" height="{card_height}" viewBox="0 0 {CARD_WIDTH} {card_height}" fill="none" xmlns="http://www.w3.org/2000/svg">')
     svg_parts.append(f'<rect width="{CARD_WIDTH}" height="{card_height}" rx="10" fill="#1d1f21"/>')
     # Title - UPDATED
-    svg_parts.append(f'<text x="{CARD_WIDTH / 2}" y="45" text-anchor="middle" font-family="\'Segoe UI\', Arial, sans-serif" font-size="22" font-weight="600" fill="#c5c8c6">42 Stats Tracker</text>')
+    svg_parts.append(f'<text x="30" y="45" font-family="\'Segoe UI\', Arial, sans-serif" font-size="22" font-weight="600" fill="#c5c8c6">42 Cursus Status</text>')
     
     # --- Top Row: Level & RNCP ---
     # Level Section (Left)
