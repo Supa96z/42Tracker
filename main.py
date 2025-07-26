@@ -55,7 +55,7 @@ def generate_svg(data):
         projects_section_height = 50 # Title + one row of projects
     
     # Calculate total height based on content
-    card_height = padding + header_section_height + section_gap + skills_section_height
+    card_height = 30 + header_section_height + section_gap + skills_section_height
     if in_progress_projects:
         card_height += section_gap + projects_section_height
     card_height += padding
