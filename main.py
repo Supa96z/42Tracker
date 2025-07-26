@@ -23,7 +23,7 @@ def get_token():
     return response.json()["access_token"]
 
 def generate_svg(data):
-    """Generates a complete, adaptive SVG from user data with symmetrical padding."""
+    """Generates a complete, adaptive SVG from user data."""
     # --- Data Processing ---
     cursus_data = next((c for c in data["cursus_users"] if c["cursus_id"] == 21), None)
     if not cursus_data:
@@ -42,7 +42,7 @@ def generate_svg(data):
     ]
 
     # --- DYNAMIC HEIGHT CALCULATION ---
-    padding = 30
+    top_padding = 30
     content_height = 0
     
     # Height of Header
@@ -56,7 +56,9 @@ def generate_svg(data):
     if in_progress_projects:
         content_height += 60 # Title height + projects row height
         
-    card_height = content_height + (padding * 2)
+    # Symmetrical padding
+    bottom_padding = 0 # REMOVED BOTTOM PADDING
+    card_height = top_padding + content_height + bottom_padding
 
 
     # --- SVG Building ---
@@ -65,13 +67,13 @@ def generate_svg(data):
     svg_parts.append(f'<rect width="{CARD_WIDTH}" height="{card_height}" rx="10" fill="transparent"/>')
     
     # --- Top Row: Level & RNCP ---
-    svg_parts.append(f'<g transform="translate(30, {padding})">')
+    svg_parts.append(f'<g transform="translate(30, {top_padding})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>')
     svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#58a6ff">{level_float:.2f}</text>')
     svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
     svg_parts.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#58a6ff" />')
     svg_parts.append('</g>')
-    svg_parts.append(f'<g transform="translate(420, {padding})">')
+    svg_parts.append(f'<g transform="translate(420, {top_padding})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Progress to RNCP Level 7</text>')
     svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#bc8cff">{rncp_percent:.0f}%</text>')
     svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
@@ -79,7 +81,7 @@ def generate_svg(data):
     svg_parts.append('</g>')
 
     # --- Middle Section: Skills ---
-    skills_y_start = padding + 120
+    skills_y_start = top_padding + 120
     svg_parts.append(f'<g transform="translate(30, {skills_y_start})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Skills</text>')
     
