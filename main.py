@@ -113,7 +113,7 @@ def generate_svg(data):
         for i, project in enumerate(in_progress_projects):
             project_name = html.escape(project['project']['name'])
             spacing = 'dx="25"' if i > 0 else ''
-            projects_line += f'<tspan {spacing} fill="#DAA520">★</tspan><tspan fill="#00008B"> {project_name}</tspan>'
+            projects_line += f'<tspan {spacing} fill="#DAA520">★</tspan><tspan fill="#5195F5"> {project_name}</tspan>'
         projects_line += '</text>'
         
         svg_parts.append(projects_line)
