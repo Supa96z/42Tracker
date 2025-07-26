@@ -1,5 +1,5 @@
-<svg width="800" height="365" viewBox="0 0 800 365" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="800" height="365" rx="10" fill="transparent"/>
+<svg width="800" height="360" viewBox="0 0 800 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="360" rx="10" fill="transparent"/>
 <g transform="translate(30, 30)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>
 <text y="35" style="font: 700 28px 'Segoe UI', Arial, sans-serif;" fill="#58a6ff">10.81</text>
