@@ -69,8 +69,8 @@ def main():
         </g>"""
         y_pos += 40
         
-    svg_content = svg_content.replace("", skills_svg_block)
-    
+    svg_content = svg_content.replace("<!-- SKILLS_PLACEHOLDER -->", skills_svg_block)
+
     with open("progress.svg", "w") as f:
         f.write(svg_content)
 
