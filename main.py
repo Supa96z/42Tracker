@@ -42,6 +42,9 @@ def main():
     rncp7_progress_width = 350 * (rncp7_percentage / 100)
     
     skills_data = cursus_data.get("skills", [])
+    
+    # --- DIAGNOSTIC PRINT ---
+    print(f"DEBUG: Found {len(skills_data)} skills in the API data.")
 
     with open("template.svg", "r") as f:
         svg_content = f.read()
@@ -58,7 +61,6 @@ def main():
     for skill in sorted(skills_data, key=lambda x: x['level'], reverse=True):
         skill_name = html.escape(skill.get("name", "Unknown Skill"))
         skill_level = skill.get("level", 0.0)
-        # THIS IS THE CORRECTED CALCULATION
         skill_progress_width = 350 * (skill_level / 100.0)
         
         skills_svg_block += f"""<g transform="translate(420, {y_pos})">
@@ -69,8 +71,8 @@ def main():
         </g>"""
         y_pos += 40
         
-    svg_content = svg_content.replace("<!-- SKILLS_PLACEHOLDER -->", skills_svg_block)
-
+    svg_content = svg_content.replace("", skills_svg_block)
+    
     with open("progress.svg", "w") as f:
         f.write(svg_content)
 
