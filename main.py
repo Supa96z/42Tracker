@@ -68,9 +68,9 @@ def generate_svg(data):
     # --- Top Row: Level & RNCP ---
     svg_parts.append(f'<g transform="translate(30, {padding})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>')
-    svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#8B000">{level_float:.2f}</text>')
+    svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#8B0000">{level_float:.2f}</text>')
     svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
-    svg_parts.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#8B000" />')
+    svg_parts.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#8B0000" />')
     svg_parts.append('</g>')
     svg_parts.append(f'<g transform="translate(420, {padding})">')
     svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">RNCP 7</text>')
