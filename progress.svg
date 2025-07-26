@@ -1,6 +1,6 @@
 <svg width="800" height="355" viewBox="0 0 800 355" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="800" height="355" rx="10" fill="#1d1f21"/>
-<text x="400.0" y="45" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="600" fill="#c5c8c6">42 Stats Tracker</text>
+<text x="30" y="45" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="600" fill="#c5c8c6">42 Cursus Status</text>
 <g transform="translate(30, 80)">
 <text y="0" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600" fill="#81a2be" style="text-transform: uppercase;">Current Level</text>
 <text y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="28" font-weight="700" fill="#81a2be">10.81</text>
