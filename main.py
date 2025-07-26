@@ -36,8 +36,8 @@ def generate_svg(data):
     skills = sorted(cursus_data.get("skills", []), key=lambda x: x['level'], reverse=True)
 
     # --- DYNAMIC HEIGHT CALCULATION ---
-    # Base height is now fixed as the layout is more compact
-    card_height = 300 
+    # Base height for the header + space for the skills section title and rows
+    card_height = 180 + (5 * 35) # Max 5 rows for skills
 
     # --- SVG Building with inline attributes for maximum compatibility ---
     svg_parts = []
@@ -47,28 +47,30 @@ def generate_svg(data):
     # Title
     svg_parts.append(f'<text x="30" y="45" font-family="\'Segoe UI\', Arial, sans-serif" font-size="20" font-weight="600" fill="#c5c8c6">42 Cursus Status: {LOGIN}</text>')
     
-    # --- Left Side: Level & RNCP ---
+    # --- Top Row: Level & RNCP ---
+    # Level Section (Left)
     svg_parts.append('<g transform="translate(30, 80)">')
-    # Level
     svg_parts.append('<text y="0" font-family="\'Segoe UI\', Arial, sans-serif" font-size="14" font-weight="600" fill="#81a2be" style="text-transform: uppercase;">Current Level</text>')
     svg_parts.append(f'<text y="35" font-family="\'Segoe UI\', Arial, sans-serif" font-size="28" font-weight="700" fill="#81a2be">{level_float:.2f}</text>')
     svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#282a2e" />')
     svg_parts.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#81a2be" />')
-    
-    # RNCP
-    svg_parts.append('<text y="95" font-family="\'Segoe UI\', Arial, sans-serif" font-size="14" font-weight="600" fill="#b294bb" style="text-transform: uppercase;">Progress to RNCP Level 7</text>')
-    svg_parts.append(f'<text y="130" font-family="\'Segoe UI\', Arial, sans-serif" font-size="28" font-weight="700" fill="#b294bb">{rncp_percent:.0f}%</text>')
-    svg_parts.append(f'<rect y="145" width="350" height="12" rx="6" fill="#282a2e" />')
-    svg_parts.append(f'<rect y="145" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#b294bb" />')
     svg_parts.append('</g>')
 
-    # --- Right Side: Skills in Two Columns ---
+    # RNCP Section (Right)
     svg_parts.append('<g transform="translate(420, 80)">')
+    svg_parts.append('<text y="0" font-family="\'Segoe UI\', Arial, sans-serif" font-size="14" font-weight="600" fill="#b294bb" style="text-transform: uppercase;">Progress to RNCP Level 7</text>')
+    svg_parts.append(f'<text y="35" font-family="\'Segoe UI\', Arial, sans-serif" font-size="28" font-weight="700" fill="#b294bb">{rncp_percent:.0f}%</text>')
+    svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#282a2e" />')
+    svg_parts.append(f'<rect y="50" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#b294bb" />')
+    svg_parts.append('</g>')
+
+
+    # --- Bottom Section: Skills in Two Columns ---
+    svg_parts.append('<g transform="translate(30, 180)">')
     svg_parts.append('<text y="0" font-family="\'Segoe UI\', Arial, sans-serif" font-size="14" font-weight="600" fill="#b5bd68" style="text-transform: uppercase;">Skills</text>')
     
-    # Split skills into two columns
     col1_skills = skills[:5]
-    col2_skills = skills[5:]
+    col2_skills = skills[5:10] # Take the next 5 skills for the second column
 
     y_pos = 30
     for i in range(5): # Loop through 5 rows
@@ -77,12 +79,12 @@ def generate_svg(data):
             skill = col1_skills[i]
             skill_name = html.escape(skill.get("name", "Unknown"))
             skill_level = skill.get("level", 0.0)
-            bar_width = min(160 * (skill_level / MAX_SKILL_LEVEL), 160) # Bar width is smaller
+            bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
             
-            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * 35)})">')
+            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * 25)})">')
             svg_parts.append(f'    <text font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_name}</text>')
-            svg_parts.append(f'    <text x="160" text-anchor="end" font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_level:.2f}</text>')
-            svg_parts.append(f'    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />')
+            svg_parts.append(f'    <text x="350" text-anchor="end" font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_level:.2f}</text>')
+            svg_parts.append(f'    <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />')
             svg_parts.append(f'    <rect y="8" width="{bar_width}" height="6" rx="3" fill="#b5bd68" />')
             svg_parts.append(f'</g>')
 
@@ -91,13 +93,13 @@ def generate_svg(data):
             skill = col2_skills[i]
             skill_name = html.escape(skill.get("name", "Unknown"))
             skill_level = skill.get("level", 0.0)
-            bar_width = min(160 * (skill_level / MAX_SKILL_LEVEL), 160)
+            bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
             
             # X position is shifted for the second column
-            svg_parts.append(f'<g transform="translate(190, {y_pos + (i * 35)})">')
+            svg_parts.append(f'<g transform="translate(390, {y_pos + (i * 25)})">')
             svg_parts.append(f'    <text font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_name}</text>')
-            svg_parts.append(f'    <text x="160" text-anchor="end" font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_level:.2f}</text>')
-            svg_parts.append(f'    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />')
+            svg_parts.append(f'    <text x="350" text-anchor="end" font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_level:.2f}</text>')
+            svg_parts.append(f'    <rect y="8" width="350" height="6" rx="3" fill="#282a2e" />')
             svg_parts.append(f'    <rect y="8" width="{bar_width}" height="6" rx="3" fill="#b5bd68" />')
             svg_parts.append(f'</g>')
 
