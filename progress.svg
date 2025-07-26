@@ -1,79 +1,83 @@
 <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
 
 <style>
-    .bg { fill: #1a1b26; }
-    .title { font-size: 24px; font-weight: bold; fill: #c0caf5; font-family: 'Segoe UI', Arial, sans-serif; }
-    .subtitle { font-size: 14px; font-weight: bold; fill: #a9b1d6; font-family: 'Segoe UI', Arial, sans-serif; }
-    .text { font-size: 14px; fill: #a9b1d6; font-family: 'Segoe UI', Arial, sans-serif; }
-    .bar-bg { fill: #414868; }
-    .level-bar { fill: #7aa2f7; }
-    .rncp-bar { fill: #bb9af7; }
-    .skill-bar { fill: #9ece6a; }
+    .bg {{ fill: #1d1f21; }}
+    .title {{ font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #c5c8c6; }}
+    .text {{ font: 400 14px 'Segoe UI', Arial, sans-serif; fill: #c5c8c6; }}
+    .subtitle {{ font: 600 12px 'Segoe UI', Arial, sans-serif; fill: #81a2be; text-transform: uppercase; }}
+    .bar-bg {{ fill: #282a2e; }}
+    .level-bar {{ fill: #81a2be; }}
+    .rncp-bar {{ fill: #b294bb; }}
+    .skill-bar {{ fill: #b5bd68; }}
 </style>
 
-<rect width="100%" height="100%" class="bg"/>
-<text x="30" y="50" class="title">My 42 Cursus Status</text>
-<text x="30" y="110" class="subtitle">CURRENT LEVEL</text>
-<text x="30" y="145" font-size="28" font-weight="bold" fill="#7aa2f7">10.81</text>
-<rect x="30" y="165" width="350" height="15" rx="7.5" class="bar-bg"/>
-<rect x="30" y="165" width="283.50000000000017" height="15" rx="7.5" class="level-bar"/>
-<text x="30" y="230" class="subtitle">PROGRESS TOWARDS RNCP LVL 7 (LVL 21)</text>
-<text x="30" y="265" font-size="28" font-weight="bold" fill="#bb9af7">51%</text>
-<rect x="30" y="285" width="350" height="15" rx="7.5" class="bar-bg"/>
-<rect x="30" y="285" width="180.16666666666666" height="15" rx="7.5" class="rncp-bar"/>
-<text x="420" y="110" class="subtitle">SKILLS</text>
-<g transform="translate(420, 140)">
+<rect width="100%" height="100%" rx="10" class="bg"/>
+<text x="30" y="40" class="title">42 Cursus Status for abataill</text>
+<g transform="translate(30, 80)">
+<text y="20" class="subtitle">Current Level</text>
+<text y="55" font-size="28" font-weight="bold" class="level-bar">10.81</text>
+<rect y="75" width="350" height="15" rx="7.5" class="bar-bg"/>
+<rect y="75" width="283.50000000000017" height="15" rx="7.5" class="level-bar"/>
+<text y="140" class="subtitle">Progress to RNCP Level 7</text>
+<text y="175" font-size="28" font-weight="bold" class="rncp-bar">51%</text>
+<rect y="195" width="350" height="15" rx="7.5" class="bar-bg"/>
+<rect y="195" width="180.16666666666666" height="15" rx="7.5" class="rncp-bar"/>
+</g>
+<g transform="translate(420, 25.0)">
+<text y="0" class="subtitle">Skills</text>
+<g transform="translate(0, 25)">
     <text class="text">Rigor</text>
     <text class="text" x="350" text-anchor="end">7.95</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="132.5" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(420, 180)">
+<g transform="translate(0, 65)">
     <text class="text">Network &amp; system administration</text>
     <text class="text" x="350" text-anchor="end">7.10</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="118.33333333333331" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(420, 220)">
+<g transform="translate(0, 105)">
     <text class="text">Web</text>
     <text class="text" x="350" text-anchor="end">6.39</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="106.5" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(420, 260)">
+<g transform="translate(0, 145)">
     <text class="text">Object-oriented programming</text>
     <text class="text" x="350" text-anchor="end">5.68</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="94.66666666666667" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(420, 300)">
+<g transform="translate(0, 185)">
     <text class="text">Imperative programming</text>
     <text class="text" x="350" text-anchor="end">4.95</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="82.5" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(420, 340)">
+<g transform="translate(0, 225)">
     <text class="text">Unix</text>
     <text class="text" x="350" text-anchor="end">4.35</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="72.5" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(420, 380)">
+<g transform="translate(0, 265)">
     <text class="text">Algorithms &amp; AI</text>
     <text class="text" x="350" text-anchor="end">4.05</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="67.5" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(420, 420)">
+<g transform="translate(0, 305)">
     <text class="text">Group &amp; interpersonal</text>
     <text class="text" x="350" text-anchor="end">3.93</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="65.5" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(420, 460)">
+<g transform="translate(0, 345)">
     <text class="text">Graphics</text>
     <text class="text" x="350" text-anchor="end">3.33</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="55.50000000000001" height="8" rx="4" class="skill-bar"/>
+</g>
 </g>
 </svg>
