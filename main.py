@@ -36,8 +36,8 @@ def generate_svg(data):
     skills = sorted(cursus_data.get("skills", []), key=lambda x: x['level'], reverse=True)
 
     # --- DYNAMIC HEIGHT CALCULATION ---
-    # Base height + space for each skill
-    card_height = 200 + (len(skills) * 35)
+    # Base height is now fixed as the layout is more compact
+    card_height = 300 
 
     # --- SVG Building with inline attributes for maximum compatibility ---
     svg_parts = []
@@ -62,22 +62,45 @@ def generate_svg(data):
     svg_parts.append(f'<rect y="145" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#b294bb" />')
     svg_parts.append('</g>')
 
-    # --- Right Side: Skills ---
+    # --- Right Side: Skills in Two Columns ---
     svg_parts.append('<g transform="translate(420, 80)">')
     svg_parts.append('<text y="0" font-family="\'Segoe UI\', Arial, sans-serif" font-size="14" font-weight="600" fill="#b5bd68" style="text-transform: uppercase;">Skills</text>')
+    
+    # Split skills into two columns
+    col1_skills = skills[:5]
+    col2_skills = skills[5:]
+
     y_pos = 30
-    for skill in skills:
-        skill_name = html.escape(skill.get("name", "Unknown"))
-        skill_level = skill.get("level", 0.0)
-        bar_width = min(350 * (skill_level / MAX_SKILL_LEVEL), 350)
-        
-        svg_parts.append(f'<g transform="translate(0, {y_pos})">')
-        svg_parts.append(f'    <text font-family="\'Segoe UI\', Arial, sans-serif" font-size="14" fill="#c5c8c6">{skill_name}</text>')
-        svg_parts.append(f'    <text x="350" text-anchor="end" font-family="\'Segoe UI\', Arial, sans-serif" font-size="14" fill="#c5c8c6">{skill_level:.2f}</text>')
-        svg_parts.append(f'    <rect y="10" width="350" height="8" rx="4" fill="#282a2e" />')
-        svg_parts.append(f'    <rect y="10" width="{bar_width}" height="8" rx="4" fill="#b5bd68" />')
-        svg_parts.append(f'</g>')
-        y_pos += 35
+    for i in range(5): # Loop through 5 rows
+        # --- Draw Column 1 ---
+        if i < len(col1_skills):
+            skill = col1_skills[i]
+            skill_name = html.escape(skill.get("name", "Unknown"))
+            skill_level = skill.get("level", 0.0)
+            bar_width = min(160 * (skill_level / MAX_SKILL_LEVEL), 160) # Bar width is smaller
+            
+            svg_parts.append(f'<g transform="translate(0, {y_pos + (i * 35)})">')
+            svg_parts.append(f'    <text font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_name}</text>')
+            svg_parts.append(f'    <text x="160" text-anchor="end" font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_level:.2f}</text>')
+            svg_parts.append(f'    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />')
+            svg_parts.append(f'    <rect y="8" width="{bar_width}" height="6" rx="3" fill="#b5bd68" />')
+            svg_parts.append(f'</g>')
+
+        # --- Draw Column 2 ---
+        if i < len(col2_skills):
+            skill = col2_skills[i]
+            skill_name = html.escape(skill.get("name", "Unknown"))
+            skill_level = skill.get("level", 0.0)
+            bar_width = min(160 * (skill_level / MAX_SKILL_LEVEL), 160)
+            
+            # X position is shifted for the second column
+            svg_parts.append(f'<g transform="translate(190, {y_pos + (i * 35)})">')
+            svg_parts.append(f'    <text font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_name}</text>')
+            svg_parts.append(f'    <text x="160" text-anchor="end" font-family="\'Segoe UI\', Arial, sans-serif" font-size="12" fill="#c5c8c6">{skill_level:.2f}</text>')
+            svg_parts.append(f'    <rect y="8" width="160" height="6" rx="3" fill="#282a2e" />')
+            svg_parts.append(f'    <rect y="8" width="{bar_width}" height="6" rx="3" fill="#b5bd68" />')
+            svg_parts.append(f'</g>')
+
     svg_parts.append('</g>')
     
     svg_parts.append('</svg>')
