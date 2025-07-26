@@ -33,7 +33,6 @@ def generate_svg(data):
     rncp_percent = min((level_float / 21) * 100, 100)
     skills = sorted(cursus_data.get("skills", []), key=lambda x: x['level'], reverse=True)
     
-    # Filter for in-progress projects AND exclude 'Exam Rank 04'
     projects_data = data.get("projects_users", [])
     in_progress_projects = [
         p for p in projects_data 
@@ -50,7 +49,7 @@ def generate_svg(data):
     
     projects_section_height = 0
     if in_progress_projects:
-        projects_section_height = 80 # Fixed height for the new project section
+        projects_section_height = 80
 
     bottom_padding = 20
     card_height = header_height + skills_header_height + (num_skill_rows * skill_row_height) + projects_section_height + bottom_padding
@@ -103,11 +102,10 @@ def generate_svg(data):
         svg_parts.append(f'<g transform="translate(30, {projects_y_start})">')
         svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>')
         
-        # Create a single text element for all projects
-        projects_line = '<text y="30" style="font: 600 14px \'Segoe UI\', Arial, sans-serif;" fill="#3fb950">'
+        # Changed fill color to a light yellow
+        projects_line = '<text y="30" style="font: 600 14px \'Segoe UI\', Arial, sans-serif;" fill="#FFD140">' 
         for project in in_progress_projects:
             project_name = html.escape(project['project']['name'])
-            # Add each project as a tspan with a star and spacing
             projects_line += f'<tspan dx="25">★ {project_name}</tspan>'
         projects_line += '</text>'
         
@@ -122,7 +120,6 @@ def main():
     try:
         token = get_token()
         headers = {"Authorization": f"Bearer {token}"}
-        # Fetch user data, which includes projects
         user_response = requests.get(f"https://api.intra.42.fr/v2/users/{LOGIN}", headers=headers)
         user_response.raise_for_status()
         user_data = user_response.json()
