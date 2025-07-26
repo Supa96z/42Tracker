@@ -23,7 +23,7 @@ def get_token():
     return response.json()["access_token"]
 
 def generate_svg(data):
-    """Generates a complete, adaptive SVG from user data with a robust layout."""
+    """Generates a complete, adaptive SVG from user data."""
     # --- Data Processing ---
     cursus_data = next((c for c in data["cursus_users"] if c["cursus_id"] == 21), None)
     if not cursus_data:
@@ -41,9 +41,9 @@ def generate_svg(data):
         and p['project']['name'] != 'Exam Rank 04'
     ]
 
-    # --- LAYOUT & HEIGHT CALCULATION ---
-    padding = 30
-    section_gap = 25 # The space between major sections
+    # --- DYNAMIC HEIGHT & LAYOUT CALCULATION (Reduced Padding) ---
+    padding = 20  # Reduced from 30
+    section_gap = 20 # Reduced from 25
     
     # Start building the layout from top to bottom
     current_y = padding
@@ -53,11 +53,12 @@ def generate_svg(data):
     
     # Add space for the Skills section
     num_skill_rows = (len(skills[:10]) + 1) // 2
-    current_y += section_gap + 30 + (num_skill_rows * 35) # Gap + Title + Rows
+    skills_section_height = 30 + (num_skill_rows * 35) # Title height + rows height
+    current_y += section_gap + skills_section_height
     
     # Add space for the Projects section if it exists
     if in_progress_projects:
-        current_y += section_gap + 30 # Gap + Title
+        current_y += section_gap + 60 # Gap + Title + projects row height
         
     card_height = current_y + padding
 
@@ -105,7 +106,7 @@ def generate_svg(data):
 
     # --- Bottom Section: Current Projects ---
     if in_progress_projects:
-        projects_y_start = skills_y_start + 30 + (num_skill_rows * 35) + section_gap
+        projects_y_start = skills_y_start + skills_section_height + section_gap
         svg_parts.append(f'<g transform="translate(30, {projects_y_start})">')
         svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>')
         
