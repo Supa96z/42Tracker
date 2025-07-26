@@ -33,10 +33,14 @@ def generate_svg(data):
     rncp_percent = min((level_float / 21) * 100, 100)
     skills = sorted(cursus_data.get("skills", []), key=lambda x: x['level'], reverse=True)
     
-    # Filter for in-progress projects
+    # Filter for in-progress projects AND exclude 'Exam Rank 04'
     projects_data = data.get("projects_users", [])
-    in_progress_projects = [p for p in projects_data if p['status'] == 'in_progress' and p['cursus_ids'] == [21]]
-
+    in_progress_projects = [
+        p for p in projects_data 
+        if p['status'] == 'in_progress' 
+        and p['cursus_ids'] == [21] 
+        and p['project']['name'] != 'Exam Rank 04'
+    ]
 
     # --- DYNAMIC HEIGHT CALCULATION ---
     header_height = 130
@@ -44,16 +48,12 @@ def generate_svg(data):
     num_skill_rows = (len(skills[:10]) + 1) // 2
     skill_row_height = 35
     
-    projects_header_height = 0
-    project_row_height = 25
-    num_project_rows = 0
-
+    projects_section_height = 0
     if in_progress_projects:
-        projects_header_height = 60 # Add space for the new section title
-        num_project_rows = len(in_progress_projects)
+        projects_section_height = 80 # Fixed height for the new project section
 
     bottom_padding = 20
-    card_height = header_height + skills_header_height + (num_skill_rows * skill_row_height) + projects_header_height + (num_project_rows * project_row_height) + bottom_padding
+    card_height = header_height + skills_header_height + (num_skill_rows * skill_row_height) + projects_section_height + bottom_padding
 
     # --- SVG Building ---
     svg_parts = []
@@ -99,16 +99,21 @@ def generate_svg(data):
 
     # --- Bottom Section: Current Projects ---
     if in_progress_projects:
-        projects_y_start = skills_y_start + skills_header_height + (num_skill_rows * skill_row_height)
+        projects_y_start = skills_y_start + skills_header_height + (num_skill_rows * skill_row_height) + 20
         svg_parts.append(f'<g transform="translate(30, {projects_y_start})">')
         svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>')
-        project_y_pos = 25
+        
+        # Create a single text element for all projects
+        projects_line = '<text y="30" style="font: 600 14px \'Segoe UI\', Arial, sans-serif;" fill="#3fb950">'
         for project in in_progress_projects:
             project_name = html.escape(project['project']['name'])
-            svg_parts.append(f'<text y="{project_y_pos}" style="font: 400 12px \'Segoe UI\', Arial, sans-serif;" fill="#8b949e">- {project_name}</text>')
-            project_y_pos += 20
+            # Add each project as a tspan with a star and spacing
+            projects_line += f'<tspan dx="25">★ {project_name}</tspan>'
+        projects_line += '</text>'
+        
+        svg_parts.append(projects_line)
         svg_parts.append('</g>')
-    
+
     svg_parts.append('</svg>')
     return "\n".join(svg_parts)
 
