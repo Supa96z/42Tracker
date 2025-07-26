@@ -1,0 +1,32 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <style>
+    .bg { fill: #1a1b26; }
+    .title { font-size: 24px; font-weight: bold; fill: #c0caf5; }
+    .subtitle { font-size: 14px; font-weight: bold; fill: #a9b1d6; }
+    .text { font-size: 14px; fill: #a9b1d6; }
+    .bar-bg { fill: #414868; }
+    .level-bar { fill: #7aa2f7; }
+    .rncp-bar { fill: #bb9af7; }
+    .skill-bar { fill: #9ece6a; }
+  </style>
+
+  <rect width="100%" height="100%" class="bg"/>
+
+  <text x="30" y="50" class="title">My 42 Cursus Status</text>
+
+  <g id="progress-section">
+    <text x="30" y="110" class="subtitle">CURRENT LEVEL</text>
+    <text id="level-text" x="30" y="145" font-size="28" font-weight="bold" fill="#7aa2f7">%%LEVEL_INT%%.%%LEVEL_DECIMAL%%</text>
+    <rect x="30" y="165" width="350" height="15" rx="7.5" class="bar-bg"/>
+    <rect id="level-progress-bar" x="30" y="165" width="0" height="15" rx="7.5" class="level-bar"/>
+
+    <text x="30" y="230" class="subtitle">PROGRESS TOWARDS RNCP LVL 7 (LVL 21)</text>
+    <text id="rncp7-percentage" x="30" y="265" font-size="28" font-weight="bold" fill="#bb9af7">%%RNCP7_PERCENT%%%</text>
+    <rect x="30" y="285" width="350" height="15" rx="7.5" class="bar-bg"/>
+    <rect id="rncp7-progress-bar" x="30" y="285" width="0" height="15" rx="7.5" class="rncp-bar"/>
+  </g>
+
+  <g id="skills-section">
+    <text x="420" y="110" class="subtitle">SKILLS</text>
+    </g>
+</svg>
