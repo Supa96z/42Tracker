@@ -1,4 +1,4 @@
-<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="280" xmlns="http://www.w3.org/2000/svg">
 
 <style>
     .bg {{ fill: #1d1f21; }}
@@ -18,66 +18,32 @@
 <text y="55" font-size="28" font-weight="bold" class="level-bar">10.81</text>
 <rect y="75" width="350" height="15" rx="7.5" class="bar-bg"/>
 <rect y="75" width="283.50000000000017" height="15" rx="7.5" class="level-bar"/>
-<text y="140" class="subtitle">Progress to RNCP Level 7</text>
-<text y="175" font-size="28" font-weight="bold" class="rncp-bar">51%</text>
-<rect y="195" width="350" height="15" rx="7.5" class="bar-bg"/>
-<rect y="195" width="180.16666666666666" height="15" rx="7.5" class="rncp-bar"/>
 </g>
-<g transform="translate(420, 25.0)">
-<text y="0" class="subtitle">Skills</text>
-<g transform="translate(0, 25)">
+<g transform="translate(420, 80)">
+<text y="20" class="subtitle">Skills</text>
+<g transform="translate(0, 45)">
     <text class="text">Rigor</text>
     <text class="text" x="350" text-anchor="end">7.95</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="132.5" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(0, 65)">
+<g transform="translate(0, 90)">
     <text class="text">Network &amp; system administration</text>
     <text class="text" x="350" text-anchor="end">7.10</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="118.33333333333331" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(0, 105)">
+<g transform="translate(0, 135)">
     <text class="text">Web</text>
     <text class="text" x="350" text-anchor="end">6.39</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="106.5" height="8" rx="4" class="skill-bar"/>
 </g>
-<g transform="translate(0, 145)">
+<g transform="translate(0, 180)">
     <text class="text">Object-oriented programming</text>
     <text class="text" x="350" text-anchor="end">5.68</text>
     <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
     <rect y="10" width="94.66666666666667" height="8" rx="4" class="skill-bar"/>
-</g>
-<g transform="translate(0, 185)">
-    <text class="text">Imperative programming</text>
-    <text class="text" x="350" text-anchor="end">4.95</text>
-    <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
-    <rect y="10" width="82.5" height="8" rx="4" class="skill-bar"/>
-</g>
-<g transform="translate(0, 225)">
-    <text class="text">Unix</text>
-    <text class="text" x="350" text-anchor="end">4.35</text>
-    <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
-    <rect y="10" width="72.5" height="8" rx="4" class="skill-bar"/>
-</g>
-<g transform="translate(0, 265)">
-    <text class="text">Algorithms &amp; AI</text>
-    <text class="text" x="350" text-anchor="end">4.05</text>
-    <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
-    <rect y="10" width="67.5" height="8" rx="4" class="skill-bar"/>
-</g>
-<g transform="translate(0, 305)">
-    <text class="text">Group &amp; interpersonal</text>
-    <text class="text" x="350" text-anchor="end">3.93</text>
-    <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
-    <rect y="10" width="65.5" height="8" rx="4" class="skill-bar"/>
-</g>
-<g transform="translate(0, 345)">
-    <text class="text">Graphics</text>
-    <text class="text" x="350" text-anchor="end">3.33</text>
-    <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>
-    <rect y="10" width="55.50000000000001" height="8" rx="4" class="skill-bar"/>
 </g>
 </g>
 </svg>
