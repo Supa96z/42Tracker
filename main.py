@@ -6,7 +6,10 @@ import sys
 # --- CONFIGURATION ---
 LOGIN = "abataill"
 # The level at which a skill is considered maxed out for the progress bar
-MAX_SKILL_LEVEL = 21.0 
+MAX_SKILL_LEVEL = 21.0
+# SVG Dimensions
+SVG_WIDTH = 800
+SVG_HEIGHT = 280 # Made thinner
 
 # --- STYLING (Feel free to change colors) ---
 STYLE = """
@@ -51,10 +54,12 @@ def generate_svg(data):
     skills = sorted(cursus_data.get("skills", []), key=lambda x: x['level'], reverse=True)
 
     # --- SVG Building ---
+    # The order is important: background first, then text and elements on top.
     svg_parts = []
-    svg_parts.append('<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">')
+    svg_parts.append(f'<svg width="{SVG_WIDTH}" height="{SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">')
     svg_parts.append(STYLE)
-    svg_parts.append('<rect width="100%" height="100%" rx="10" class="bg"/>')
+    svg_parts.append('<rect width="100%" height="100%" rx="10" class="bg"/>') # Background drawn first
+    
     svg_parts.append(f'<text x="30" y="40" class="title">42 Cursus Status for {LOGIN}</text>')
     
     # --- Level & RNCP Section (Left Side) ---
@@ -63,21 +68,13 @@ def generate_svg(data):
     svg_parts.append(f'<text y="55" font-size="28" font-weight="bold" class="level-bar">{level_float:.2f}</text>')
     svg_parts.append(f'<rect y="75" width="350" height="15" rx="7.5" class="bar-bg"/>')
     svg_parts.append(f'<rect y="75" width="{350 * (level_float - int(level_float))}" height="15" rx="7.5" class="level-bar"/>')
-
-    svg_parts.append(f'<text y="140" class="subtitle">Progress to RNCP Level 7</text>')
-    svg_parts.append(f'<text y="175" font-size="28" font-weight="bold" class="rncp-bar">{rncp_percent:.0f}%</text>')
-    svg_parts.append(f'<rect y="195" width="350" height="15" rx="7.5" class="bar-bg"/>')
-    svg_parts.append(f'<rect y="195" width="{350 * (rncp_percent / 100)}" height="15" rx="7.5" class="rncp-bar"/>')
     svg_parts.append('</g>')
 
     # --- Skills Section (Right Side) ---
-    skills_height = len(skills) * 40 # Calculate total height of the skills block
-    y_offset = 80 + (250 - skills_height) / 2 # Calculate vertical center offset
-    
-    svg_parts.append(f'<g transform="translate(420, {y_offset})">')
-    svg_parts.append('<text y="0" class="subtitle">Skills</text>')
-    y_pos = 25 # Start position for the first skill bar
-    for skill in skills:
+    svg_parts.append('<g transform="translate(420, 80)">')
+    svg_parts.append('<text y="20" class="subtitle">Skills</text>')
+    y_pos = 45 # Start position for the first skill bar
+    for skill in skills[:4]: # Limit to top 4 skills to fit in the thinner design
         skill_name = html.escape(skill.get("name", "Unknown"))
         skill_level = skill.get("level", 0.0)
         bar_width = 350 * (skill_level / MAX_SKILL_LEVEL)
@@ -89,7 +86,7 @@ def generate_svg(data):
         svg_parts.append(f'    <rect y="10" width="350" height="8" rx="4" class="bar-bg"/>')
         svg_parts.append(f'    <rect y="10" width="{bar_width}" height="8" rx="4" class="skill-bar"/>')
         svg_parts.append(f'</g>')
-        y_pos += 40
+        y_pos += 45
     svg_parts.append('</g>')
 
     svg_parts.append('</svg>')
@@ -98,21 +95,18 @@ def generate_svg(data):
 def main():
     """Main function to run the process."""
     try:
-        print(f"--- Starting SVG Generation for user: {LOGIN} ---")
         token = get_token()
         headers = {"Authorization": f"Bearer {token}"}
         api_url = f"https://api.intra.42.fr/v2/users/{LOGIN}"
         response = requests.get(api_url, headers=headers)
         response.raise_for_status()
         user_data = response.json()
-        print("✅ API Data fetched successfully.")
         
         svg_content = generate_svg(user_data)
-        print("✅ SVG content generated successfully.")
         
         with open("progress.svg", "w") as f:
             f.write(svg_content)
-        print("✅ progress.svg file written successfully.")
+        print("✅ Polished progress.svg file written successfully.")
 
     except Exception as e:
         print(f"❌ An error occurred: {e}")
