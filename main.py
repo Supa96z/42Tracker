@@ -67,22 +67,24 @@ def generate_svg(data):
     
     # --- Top Row: Level & RNCP ---
     svg_parts.append(f'<g transform="translate(30, {padding})">')
-    svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Level</text>')
-    svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#88c0d0">{level_float:.2f}</text>')
-    svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
-    svg_parts.append(f'<rect y="50" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#88c0d0" />')
+    # COMBINED TITLE AND VALUE
+    svg_parts.append(f'<text y="25" style="font: 600 18px \'Segoe UI\', Arial, sans-serif;" fill="#88c0d0">LEVEL {level_float:.2f}</text>')
+    svg_parts.append(f'<rect y="40" width="350" height="12" rx="6" fill="#21262d" />')
+    svg_parts.append(f'<rect y="40" width="{350 * (level_float - int(level_float))}" height="12" rx="6" fill="#88c0d0" />')
     svg_parts.append('</g>')
+    
     svg_parts.append(f'<g transform="translate(420, {padding})">')
-    svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">RNCP 7</text>')
-    svg_parts.append(f'<text y="35" style="font: 700 28px \'Segoe UI\', Arial, sans-serif;" fill="#b48ead">{rncp_percent:.0f}%</text>')
-    svg_parts.append(f'<rect y="50" width="350" height="12" rx="6" fill="#21262d" />')
-    svg_parts.append(f'<rect y="50" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#b48ead" />')
+    # COMBINED TITLE AND VALUE
+    svg_parts.append(f'<text y="25" style="font: 600 18px \'Segoe UI\', Arial, sans-serif;" fill="#b48ead">{rncp_percent:.0f}% TOWARDS RNCP 7</text>')
+    svg_parts.append(f'<rect y="40" width="350" height="12" rx="6" fill="#21262d" />')
+    svg_parts.append(f'<rect y="40" width="{350 * (rncp_percent / 100)}" height="12" rx="6" fill="#b48ead" />')
     svg_parts.append('</g>')
+
 
     # --- Middle Section: Skills ---
     skills_y_start = padding + header_section_height + section_gap
     svg_parts.append(f'<g transform="translate(30, {skills_y_start})">')
-    svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Skills</text>')
+    svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#a3be8c">Skills</text>')
     
     col1_skills = skills[:5]
     col2_skills = skills[5:10]
@@ -107,9 +109,9 @@ def generate_svg(data):
     if in_progress_projects:
         projects_y_start = skills_y_start + skills_section_height + section_gap - 10
         svg_parts.append(f'<g transform="translate(30, {projects_y_start})">')
-        svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>')
+        svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#ebcb8b">Current Projects</text>')
         
-        projects_line = '<text y="25" style="font: 600 14px \'Segoe UI\', Arial, sans-serif;">'
+        projects_line = '<text y="25" style="font: 400 14px \'Segoe UI\', Arial, sans-serif;">'
         for i, project in enumerate(in_progress_projects):
             project_name = html.escape(project['project']['name'])
             spacing = 'dx="25"' if i > 0 else ''
