@@ -22,7 +22,7 @@
 <g transform="translate(390, 125)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Graphics</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">3.33</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="55.50000000000001" height="6" rx="3" fill="#a3be8c" /></g>
 <g transform="translate(0, 160)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Imperative programming</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.95</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="82.5" height="6" rx="3" fill="#a3be8c" /></g>
 </g>
-<g transform="translate(30, 310)">
+<g transform="translate(30, 315)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#ebcb8b">Current Projects</text>
 <text y="25" style="font: 400 14px 'Segoe UI', Arial, sans-serif;"><tspan  fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> Cybersecurity</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> ft_linear_regression</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> Python for Data Science</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> dslr</tspan></text>
 </g>
