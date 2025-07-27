@@ -26,6 +26,6 @@
 </g>
 <g transform="translate(30, 310)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>
-<text y="20" style="font: 600 14px 'Segoe UI', Arial, sans-serif;"><tspan  fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> Cybersecurity</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> ft_linear_regression</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> Python for Data Science</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> dslr</tspan></text>
+<text y="30" style="font: 600 14px 'Segoe UI', Arial, sans-serif;"><tspan  fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> Cybersecurity</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> ft_linear_regression</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> Python for Data Science</tspan><tspan dx="25" fill="#ebcb8b">★</tspan><tspan fill="#c9d1d9"> dslr</tspan></text>
 </g>
 </svg>
