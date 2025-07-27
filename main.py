@@ -107,7 +107,7 @@ def generate_svg(data):
 
     # --- Bottom Section: Current Projects ---
     if in_progress_projects:
-        projects_y_start = skills_y_start + skills_section_height + section_gap - 10
+        projects_y_start = skills_y_start + skills_section_height + section_gap - 5
         svg_parts.append(f'<g transform="translate(30, {projects_y_start})">')
         svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#ebcb8b">Current Projects</text>')
         
