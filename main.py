@@ -58,7 +58,7 @@ def generate_svg(data):
     card_height = header_section_height + section_gap + skills_section_height
     if in_progress_projects:
         card_height += section_gap + projects_section_height
-    card_height += padding - 20
+    card_height += padding - 50
 
     # --- SVG Building ---
     svg_parts = []
