@@ -109,7 +109,7 @@ def generate_svg(data):
         svg_parts.append(f'<g transform="translate(30, {projects_y_start})">')
         svg_parts.append('<text y="0" style="font: 600 14px \'Segoe UI\', Arial, sans-serif; text-transform: uppercase;" fill="#c9d1d9">Current Projects</text>')
         
-        projects_line = '<text y="30" style="font: 600 14px \'Segoe UI\', Arial, sans-serif;">'
+        projects_line = '<text y="25" style="font: 600 14px \'Segoe UI\', Arial, sans-serif;">'
         for i, project in enumerate(in_progress_projects):
             project_name = html.escape(project['project']['name'])
             spacing = 'dx="25"' if i > 0 else ''
