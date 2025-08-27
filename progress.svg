@@ -1,26 +1,26 @@
 <svg width="800" height="330" viewBox="0 0 800 330" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="800" height="330" rx="10" fill="transparent"/>
 <g transform="translate(30, 5)">
-<text y="25" style="font: 600 18px 'Segoe UI', Arial, sans-serif;" fill="#88c0d0">LEVEL 11.31</text>
+<text y="25" style="font: 600 18px 'Segoe UI', Arial, sans-serif;" fill="#88c0d0">LEVEL 11.60</text>
 <rect y="40" width="350" height="12" rx="6" fill="#21262d" />
-<rect y="40" width="108.50000000000017" height="12" rx="6" fill="#88c0d0" />
+<rect y="40" width="209.9999999999999" height="12" rx="6" fill="#88c0d0" />
 </g>
 <g transform="translate(420, 5)">
-<text y="25" style="font: 600 18px 'Segoe UI', Arial, sans-serif;" fill="#b48ead">54% TOWARDS RNCP 7</text>
+<text y="25" style="font: 600 18px 'Segoe UI', Arial, sans-serif;" fill="#b48ead">55% TOWARDS RNCP 7</text>
 <rect y="40" width="350" height="12" rx="6" fill="#21262d" />
-<rect y="40" width="188.5" height="12" rx="6" fill="#b48ead" />
+<rect y="40" width="193.33333333333334" height="12" rx="6" fill="#b48ead" />
 </g>
 <g transform="translate(30, 90)">
 <text y="0" style="font: 600 14px 'Segoe UI', Arial, sans-serif; text-transform: uppercase;" fill="#a3be8c">Skills</text>
-<g transform="translate(0, 20)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Rigor</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">7.95</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="132.5" height="6" rx="3" fill="#a3be8c" /></g>
-<g transform="translate(390, 20)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Algorithms &amp; AI</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.65</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="77.5" height="6" rx="3" fill="#a3be8c" /></g>
+<g transform="translate(0, 20)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Rigor</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">8.17</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="136.16666666666666" height="6" rx="3" fill="#a3be8c" /></g>
+<g transform="translate(390, 20)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Imperative programming</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.95</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="82.5" height="6" rx="3" fill="#a3be8c" /></g>
 <g transform="translate(0, 55)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Network &amp; system administration</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">7.10</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="118.33333333333331" height="6" rx="3" fill="#a3be8c" /></g>
 <g transform="translate(390, 55)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Unix</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.35</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="72.5" height="6" rx="3" fill="#a3be8c" /></g>
 <g transform="translate(0, 90)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Web</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">6.39</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="106.5" height="6" rx="3" fill="#a3be8c" /></g>
-<g transform="translate(390, 90)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">DB &amp; Data</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.06</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="67.66666666666666" height="6" rx="3" fill="#a3be8c" /></g>
+<g transform="translate(390, 90)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">DB &amp; Data</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.29</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="71.5" height="6" rx="3" fill="#a3be8c" /></g>
 <g transform="translate(0, 125)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Object-oriented programming</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">5.68</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="94.66666666666667" height="6" rx="3" fill="#a3be8c" /></g>
 <g transform="translate(390, 125)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Group &amp; interpersonal</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">3.93</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="65.5" height="6" rx="3" fill="#a3be8c" /></g>
-<g transform="translate(0, 160)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Imperative programming</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">4.95</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="82.5" height="6" rx="3" fill="#a3be8c" /></g>
+<g transform="translate(0, 160)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Algorithms &amp; AI</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">5.22</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="87.0" height="6" rx="3" fill="#a3be8c" /></g>
 <g transform="translate(390, 160)"><text style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">Graphics</text><text x="350" text-anchor="end" style="font: 400 12px 'Segoe UI', Arial, sans-serif;" fill="#8b949e">3.33</text><rect y="8" width="350" height="6" rx="3" fill="#21262d" /><rect y="8" width="55.50000000000001" height="6" rx="3" fill="#a3be8c" /></g>
 </g>
 <g transform="translate(30, 297)">
